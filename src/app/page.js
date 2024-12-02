@@ -12,32 +12,32 @@ export default function Home() {
   const videos = [
     {
       title: "Bénédicte & Guerrick",
-      src: "/images/benedictexguerrick.webp", 
+      src: "./images/benedictexguerrick.webp", 
       link: "https://www.youtube.com/watch?v=P3_mej4hvno&t=2s"
     },
     {
       title: "Sego and Joseph The Engagement ",
-      src: "/images/segolenepic.webp", 
+      src: "./images/segolenepic.webp", 
       link: "https://www.youtube.com/watch?v=DKYUOLvkRcw&t=1s"
     },
     {
       title: "Marielle et Eli - The Engagement ",
-      src: "/images/MariellexElie.webp", 
+      src: "./images/MariellexElie.webp", 
       link: "https://www.youtube.com/watch?v=Li6lxmgG8FY"
     },
     {
       title: "Clemance + Nicolas",
-      src: "/images/ClemancexNicolas.webp", 
+      src: "./images/ClemancexNicolas.webp", 
       link: "https://www.youtube.com/watch?v=WZ7tfe7NLaI"
     },
     {
       title: "Sarah et Marius",
-      src: "/images/SarahxMarius.webp", 
+      src: "./images/SarahxMarius.webp", 
       link: "https://www.youtube.com/watch?v=xCHb1k2uv74"
     },
     {
       title: "Nouria et Dan",
-      src: "/images/NouriaxDan.webp", 
+      src: "./images/NouriaxDan.webp", 
       link: "https://www.youtube.com/watch?v=D7CfHZLOEnw"
     },
   ];
@@ -69,7 +69,7 @@ export default function Home() {
         <div className={`toggle-menu ${menuOpen ? "open" : ""}`}>
           <div className="logo-mobile">
             <Link href="/">
-              <img className="header-logo" src="/images/logo.png" alt="logo" />
+              <img className="header-logo" src="./images/logo.png" alt="logo" />
             </Link>
           </div>
           <nav className="toggle-nav">
@@ -86,7 +86,7 @@ export default function Home() {
       <header className="classic-menu">
         <div className="logo">
           <Link href="/">
-            <img className="header-logo" src="/images/logo.png" alt="logo" />
+            <img className="header-logo" src="./images/logo.png" alt="logo" />
           </Link>
         </div>
         <nav className="menu-container">
@@ -101,7 +101,7 @@ export default function Home() {
       {/* Main Content */}
       <main>
         <div className="main-picture-container">
-          <img className="main-picture" src="/images/mainpicture.jpg" alt="Main visual" />
+          <img className="main-picture" src="./images/mainpicture.jpg" alt="Main visual" />
           <div className="overlay-text">BENA.HAUS</div>
           <div className="mouse-icon" onClick={scrollToBottom}>
             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="45" viewBox="0 0 27 45" fill="none">
