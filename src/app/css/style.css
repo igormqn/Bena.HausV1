@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    cursor: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+}
+
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background-color: rgb(255, 255, 255);
+    opacity: 0.8;
+    border-radius: 50%;
+    pointer-events: none; /* Le curseur ne bloque pas les clics */
+    z-index: 9999;
+    transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
+  }
+  
+  /* État agrandi lorsque sur un lien */
+  .cursor.big {
+    width: 40px;
+    height: 40px;
+    transform: scale(2);
+  }
+
+.toggle-menu-container {
+    display: none;
+}
+
+header {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    position: relative;
+    z-index: 1; /* Assure-toi que le header soit au-dessus de l'image */
+    transform-origin: center;
+  }
+
+  @media (max-width: 800px) {
+    header {
+        display: none;
+    }
+/* Conteneur principal */
+.toggle-menu-container {
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Icône hamburger */
+  .hamburger {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 3; /* Toujours au-dessus du menu */
+  }
+  
+  /* Menu toggle (caché par défaut) */
+  .toggle-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Caché en dehors de l'écran */
+    width: 300px;
+    height: 100vh;
+    background-color: #000;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease; /* Animation fluide */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Menu ouvert */
+  .toggle-menu.open {
+    right: 0; /* Défiler sur l'écran */
+  }
+  
+  .toggle-nav {
+    text-align: center;
+  }
+  /* Logo */
+  .logo-mobile {
+    margin-bottom: 20px;
+  }
+  
+  .header-logo {
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  /* Navigation */
+  .toggle-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Espacement entre les liens */
+  }
+  
+  .toggle-nav ul li a {
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .toggle-nav ul li a:hover {
+    color: #ff0000; /* Rouge au survol */
+  }
+  
+  }
+  
+.logo {
+    z-index: 0;
+}
+.header-logo {
+    height: 90px;
+    border-radius: 3rem;
+}
+
+nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 2rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+nav ul li:first-child {
+    margin-left: 0;
+}
+
+.nav-links {
+    text-decoration: none;
+    color: #fff;
+    position: relative; /* Necessary for the before element */
+    display: inline-block; /* Too handle link larger*/
+    padding: 3px 0; /* Add space under the text */
+    transition: opacity 0.3s ease;
+}
+
+.nav-links:after{
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -1px;
+    transform-origin: left;
+    transition: width 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links:hover:after{
+    width: 100%;
+    transform-origin: right;
+}
+
+.menu-container li:hover .nav-links {
+    opacity: 1;
+}
+
+.menu-container:hover .nav-links:not(:hover){
+    opacity: 0.5;
+}
+
+/* Container pour l'image */
+.main-picture-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* L'image va couvrir toute la hauteur de la fenêtre */
+    overflow: hidden; /* Empêche l'image de déborder */
+    margin-top: -120px; /* Décalage pour recouvrir le header */
+  }
+  
+  /* Image */
+  .main-picture {
+    position: absolute; /* Position absolue pour que l'image soit contrôlable */
+    top: 50%; /* Centrer l'image verticalement */
+    left: 50%; /* Centrer l'image horizontalement */
+    transform: translate(-50%, -50%) scale(1.1); /* Légère échelle pour simuler un zoom */
+    width: 110%; /* Augmenter légèrement la largeur pour couvrir l'espace sans débordement */
+    height: 110%; /* Augmenter légèrement la hauteur pour couvrir l'espace sans débordement */
+    object-fit: cover; /* L'image couvre toute la zone sans distorsion */
+    transition: transform 0.4s ease-out; /* Transition pour l'effet de survol */
+  }
+  
+  /* Texte sur l'image */
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem; /* Taille du texte */
+    font-weight: bold;
+    color: white; /* Couleur du texte */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Ombre du texte pour le rendre plus lisible */
+    z-index: 2; /* Assure que le texte est au-dessus de l'image */
+    pointer-events: none; /* Pour que le texte ne gêne pas le survol de l'image */
+    font-family: 'Raleway', sans-serif;
+  }
+  @media screen and (max-width: 800px) {
+    .overlay-text{
+        display: none;
+    }
+  }
+/* Conteneur pour l'icône */
+.mouse-icon {
+    position: absolute; /* Permet de le positionner dans le conteneur */
+    bottom: 20px; /* Place l'icône en bas du conteneur */
+    left: 50%; /* Centre horizontalement */
+    transform: translateX(-50%); /* Correction pour centrer réellement */
+    z-index: 2; /* Assure qu'il soit visible au-dessus de l'image */
+    opacity: 0.8; /* Légère transparence pour un effet subtil */
+    transition: opacity 0.3s ease-in-out; /* Transition pour un effet smooth */
+}
+
+/* Taille du SVG */
+.mouse-icon svg {
+    width: 50px;
+    height: 50px;
+    fill: none; /* Assure qu'il n'y a pas de remplissage */
+    stroke: #ffffff; /* Couleur blanche pour un bon contraste */
+    stroke-width: 2px;
+}
+
+/* Effet au survol (optionnel) */
+.mouse-icon:hover {
+    opacity: 1; /* Rendre plus visible au survol */
+    transform: translateX(-50%) scale(1.1); /* Agrandir légèrement */
+}
+
+.bottom-container {
+    padding: 20px; /* Ajoute de l'espace autour */
+    box-sizing: border-box; /* Inclut padding et border dans le calcul des dimensions */
+    background-color: #000; /* Couleur de fond */
+}
+
+/* Grille des vidéos */
+.video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 20px; /* Espacement constant entre les cartes */
+    margin: 0 auto; /* Centre la grille horizontalement */
+    max-width: 1200px; /* Limite la largeur maximale */
+    padding: 10px; /* Espacement interne pour éviter le débordement */
+    box-sizing: border-box; /* Gère les marges internes */
+}
+
+/* Style des cartes vidéo */
+.video-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1c1c1c;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition fluide */
+    height: auto; /* S'adapte dynamiquement au contenu */
+    min-width: 280px; /* Largeur minimale pour chaque carte */
+    box-sizing: border-box; /* Empêche le débordement à cause du padding */
+}
+
+.video-card img {
+    height: 150px;
+}
+
+/* Animation au survol */
+.video-card:hover {
+    transform: translateY(-10px); /* Lève la carte */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Accentuer l'ombre */
+}
+
+/* Bouton "Watch Now" */
+.watch-now-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%; /* Occupe tout l'espace disponible */
+    max-width: 200px; /* Taille maximale du bouton */
+}
+
+/* Survol du bouton */
+.watch-now-button:hover {
+    background-color: #cc0000;
+    transform: translateY(-2px); /* Légère levée du bouton */
+}
+
+/* Icône YouTube */
+.youtube-icon {
+    margin-right: 10px;
+    margin-top: -4px;
+}
+
+/*About Page*/
+
+.about-quote {
+    font-family: 'Lemon', sans-serif !important;
+}
+
+/*Contact Page*/ 
+
+/* Formulaire de contact */
+.contact-container {
+    text-align: center;
+    padding: 50px;
+    background-color: #121212;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .contact-container h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 30px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: auto;
+  }
+  
+  label {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea {
+    padding: 12px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background-color: #222;
+    color: #fff;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: #ff6600;
+    outline: none;
+  }
+  
+  input::placeholder,
+  textarea::placeholder {
+    color: #bbb;
+  }
+  
+  textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+  
+  button {
+    padding: 15px;
+    background-color: #222;
+    color: #fff;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  }
+  
+  button:hover {
+    background-color: #222;
+    transform: translateY(-2px);
+  }
+  
+  button:active {
+    background-color: #a19993;
+  }
+  
+/* Loader container */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black; /* Fond de la page pendant le chargement */
+  }
+  
+  /* Spinner */
+  .spinner {
+    width: 100px;
+    height: 100px;
+    border: 10px solid rgba(255, 255, 255, 0.3); /* Anneau extérieur translucide */
+    border-top: 10px solid white; /* Anneau intérieur opaque */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Animation pour le spinner */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
